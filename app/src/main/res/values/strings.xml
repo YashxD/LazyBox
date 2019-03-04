@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">LazyBox</string>
+
+    <string name="switch_on">On</string>
+    <string name="switch_off">Off</string>
+    <string name="energy_history_button">Energy History</string>
+
+    <string name="connect">Connect</string>
 </resources>
