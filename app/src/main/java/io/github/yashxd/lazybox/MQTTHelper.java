@@ -36,7 +36,7 @@ public class MQTTHelper {
     final String serverUri = "tcp://m24.cloudmqtt.com:14818";
 
     final String clientId = "ExampleAndroidClient";
-    final String subscriptionTopic = "sensor/lol";
+    final String subscriptionTopic = "lazybox";
 
     final String username = "gldsqnue";
     final String password = "3IjECOD6a7It";
@@ -101,7 +101,7 @@ public class MQTTHelper {
 
                     Toast.makeText(context, "Connected to MQTT Server", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Connected to MQTT Server");
-                    subscribeToTopic();
+                    //subscribeToTopic();
                 }
 
                 @Override
@@ -139,6 +139,8 @@ public class MQTTHelper {
     }
     public void publishMessage(String payload) throws MqttException {
         MqttMessage message = new MqttMessage(payload.getBytes());
+        message.setQos(1);
+        message.setRetained(true);
         mqttAndroidClient.publish(subscriptionTopic, message);
     }
     public void disconnect() throws MqttException {

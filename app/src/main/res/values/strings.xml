@@ -5,5 +5,5 @@
     <string name="switch_off">Off</string>
     <string name="energy_history_button">Energy History</string>
 
-    <string name="connect">Connect</string>
+    <string name="connect">Init</string>
 </resources>
