@@ -36,7 +36,8 @@ public class MQTTHelper {
     final String serverUri = "tcp://m24.cloudmqtt.com:14818";
 
     final String clientId = "ExampleAndroidClient";
-    final String subscriptionTopic = "lazybox";
+    final String subscriptionTopic = "lazybox/currentval";
+    final String publishingTopic = "lazybox/switchstate";
 
     final String username = "gldsqnue";
     final String password = "3IjECOD6a7It";
@@ -101,7 +102,7 @@ public class MQTTHelper {
 
                     Toast.makeText(context, "Connected to MQTT Server", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "Connected to MQTT Server");
-                    //subscribeToTopic();
+                    subscribeToTopic();
                 }
 
                 @Override
@@ -123,12 +124,12 @@ public class MQTTHelper {
             mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Log.w(TAG,"Subscribed!");
+                    Log.d(TAG,"Subscribed!");
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Log.w(TAG, "Subscribed fail!");
+                    Log.d(TAG, "Subscribed fail!");
                 }
             });
 
@@ -141,8 +142,10 @@ public class MQTTHelper {
         MqttMessage message = new MqttMessage(payload.getBytes());
         message.setQos(1);
         message.setRetained(true);
-        mqttAndroidClient.publish(subscriptionTopic, message);
+        mqttAndroidClient.publish(publishingTopic, message);
+        Log.d(TAG, "Message Published");
     }
+
     public void disconnect() throws MqttException {
         mqttAndroidClient.disconnect();
         Log.d(TAG, "Disconnected Successfully");
