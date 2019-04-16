@@ -35,8 +35,8 @@
 bool        isInit        = false;      //Check if ESP has been Initialised
 bool        msgRecieved   = false;
 bool        isCleanSession = false;
-char*       wifi_ssid     = "BijuKoMatBolna";
-char*       wifi_pass     = "jaimatadi";
+char*       wifi_ssid     = "OnePlus 6";
+char*       wifi_pass     = "password";
 uint8_t     wifi_ssid_siz = 0;
 uint8_t     wifi_pass_siz = 0;
 float       hall_current = 3; //testing
